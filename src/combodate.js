@@ -233,6 +233,10 @@
                 items[this.options.yearDescending ? 'push' : 'unshift']([i, name]);
             }
 
+            if (this.options.noYearValue) {
+                items.unshift([this.options.noYearValue, this.options.noYearText]);
+            }
+
             items = this.fillCommon('y').concat(items);
 
             return items;
@@ -512,6 +516,8 @@
         minYear: 1970,
         maxYear: 2015,
         yearDescending: true,
+        noYearValue: null,
+        noYearText: null,
         minuteStep: 5,
         secondStep: 1,
         firstItem: 'empty', //'name', 'empty', 'none'
