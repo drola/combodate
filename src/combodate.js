@@ -146,7 +146,9 @@
             var values = [],
                 relTime;
 
-            if(this.options.firstItem === 'name') {
+            if(key == 'y' && this.options.noYearText && this.options.noYearValue) {
+                values.push([this.options.noYearValue, this.options.noYearText]);
+            } else if(this.options.firstItem === 'name') {
                 //need both to support moment ver < 2 and  >= 2
                 if (moment.localeData) {
                     relTime = moment.localeData()._relativeTime;
@@ -231,10 +233,6 @@
             for(i=this.options.maxYear; i>=this.options.minYear; i--) {
                 name = longNames ? i : (i+'').substring(2);
                 items[this.options.yearDescending ? 'push' : 'unshift']([i, name]);
-            }
-
-            if (this.options.noYearValue) {
-                items.unshift([this.options.noYearValue, this.options.noYearText]);
             }
 
             items = this.fillCommon('y').concat(items);
